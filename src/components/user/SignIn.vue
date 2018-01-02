@@ -7,10 +7,11 @@
     </v-layout>
     <v-layout>
       <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <v-card-text>
-            <v-container>
-              <form @submit.prevent="onSignIn">
+        <form @submit.prevent="onSignIn">
+          <v-card>
+            <v-card-title dark class="blue">User Sign In</v-card-title>
+            <v-card-text>
+              <v-container>
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
@@ -36,22 +37,21 @@
                     ></v-text-field>
                   </v-flex>
                 </v-layout>
-                <v-layout row>
-                  <v-flex xs12>
-                    <v-btn color="info" type="submit" :loading="loading">Sign In</v-btn>
-                  </v-flex>
-                </v-layout>
-              </form>
-            </v-container>
-          </v-card-text>
-        </v-card>
+              </v-container>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="info" type="submit" :loading="loading">Sign In</v-btn>
+            </v-card-actions>
+          </v-card>
+        </form>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import _ from 'underscore'
+  import _ from 'underscore'
 
   export default {
     data () {
@@ -70,28 +70,28 @@ import _ from 'underscore'
     },
     computed: {
       user () {
-        return this.$store.getters.getUser;
+        return this.$store.getters.getUser
       },
       error () {
-        return this.$store.getters.getError;
+        return this.$store.getters.getError
       },
       loading () {
-        return this.$store.getters.getLoading;
+        return this.$store.getters.getLoading
       }
     },
     watch: {
       user (val) {
         if (!_.isEmpty(val)) {
-          this.$router.push('/');
+          this.$router.push('/')
         }
       }
     },
     methods: {
       onSignIn () {
-        this.$store.dispatch('signInUser', {email: this.email, password: this.password});
+        this.$store.dispatch('signInUser', {email: this.email, password: this.password})
       },
       onDismissed () {
-        this.$store.dispatch('clearError', {});
+        this.$store.dispatch('clearError', {})
       }
     }
   }

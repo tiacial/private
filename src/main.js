@@ -10,9 +10,11 @@ import * as Firebase from 'firebase'
 import router from './router'
 import { store } from './store'
 import Alert from './components/shared/Alert.vue'
+import EditUserProfile from './components/user/profile/EditUserProfile.vue'
 
 Vue.use(Vuetify)
 Vue.component('app-alert', Alert)
+Vue.component('edit-profile', EditUserProfile)
 
 Vue.config.productionTip = false
 
@@ -25,16 +27,16 @@ new Vue({
   components: { App },
   created () {
     Firebase.initializeApp({
-      apiKey: "AIzaSyAOCebjyKYNoWsmfEVQJTSYR48qru1DMTI",
-      authDomain: "fido-85a2c.firebaseapp.com",
-      databaseURL: "https://fido-85a2c.firebaseio.com",
-      projectId: "fido-85a2c",
-      storageBucket: "fido-85a2c.appspot.com",
-      messagingSenderId: "998765963495"
+      apiKey: 'AIzaSyAOCebjyKYNoWsmfEVQJTSYR48qru1DMTI',
+      authDomain: 'fido-85a2c.firebaseapp.com',
+      databaseURL: 'https://fido-85a2c.firebaseio.com',
+      projectId: 'fido-85a2c',
+      storageBucket: 'fido-85a2c.appspot.com',
+      messagingSenderId: '998765963495'
     })
     Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.$store.dispatch('autoSignIn', user);
+        this.$store.dispatch('autoSignIn', user)
       }
     })
   }

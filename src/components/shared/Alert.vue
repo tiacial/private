@@ -11,7 +11,7 @@
     },
     methods: {
       onClose () {
-        this.$emit('dismissed');
+        this.$emit('dismissed')
       }
     }
   }

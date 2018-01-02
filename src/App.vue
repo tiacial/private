@@ -81,17 +81,19 @@
           menuitems = [
             { icon: 'supervisor_account', title: 'View Activities', link: '/activities' },
             { icon: 'add', title: 'New Activity', link: '/new' },
+            { icon: 'account_circle', title: 'Profile', link: '/profile' }
           ]
         }
-        return menuitems;
+        return menuitems
       },
       isAuthorizedUser () {
-        return !_.isEmpty(this.$store.getters.getUser);
+        return !_.isEmpty(this.$store.getters.getUser)
       }
     },
     methods: {
       onLogOut () {
-        this.$store.dispatch('logout');
+        this.$store.dispatch('logout')
+        this.$router.go('/')
       }
     }
   }
