@@ -15,13 +15,13 @@
                 <v-subheader>First Name:</v-subheader>
               </v-flex>
               <v-flex xs8>
-                <v-text-field label="Enter First Name" v-model="userProfile.first_name"></v-text-field>
+                <v-text-field label="Enter First Name" v-model="userProfile.firstName"></v-text-field>
               </v-flex>
               <v-flex xs4>
                 <v-subheader>Last Name:</v-subheader>
               </v-flex>
               <v-flex xs8>
-                <v-text-field label="Enter Last Name" v-model="userProfile.last_name"></v-text-field>
+                <v-text-field label="Enter Last Name" v-model="userProfile.lastName"></v-text-field>
               </v-flex>
               <v-flex xs4>
                 <v-subheader>Birthday:</v-subheader>
@@ -60,20 +60,15 @@
 
 <script>
   export default {
-    props: {
-      profile: Object
-    },
     data () {
       return {
-        newImageUrl: null,
         filename: null,
-        profileImage: null,
         userProfile: {},
         editProfileDialog: false
       }
     },
     mounted () {
-      this.userProfile = this.profile
+      this.userProfile = JSON.parse(JSON.stringify(this.$store.getters.getUserProfile))
     },
     methods: {
       onFocus () {
@@ -87,10 +82,10 @@
           this.userProfile.imageUrl = fileReader.result
         })
         fileReader.readAsDataURL(file)
-        this.profileImage = file
+        this.userProfile.profileImage = file
       },
       onSaveProfile () {
-        console.log(this.userProfile)
+        this.$store.dispatch('saveUserProfile', this.userProfile)
       }
     }
   }

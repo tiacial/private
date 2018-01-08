@@ -80,7 +80,7 @@
         if (this.isAuthorizedUser) {
           menuitems = [
             { icon: 'supervisor_account', title: 'View Activities', link: '/activities' },
-            { icon: 'add', title: 'New Activity', link: '/new' },
+            { icon: 'list', title: 'My Activity', link: '/personal/list' },
             { icon: 'account_circle', title: 'Profile', link: '/profile' }
           ]
         }

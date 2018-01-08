@@ -4,12 +4,14 @@
       <v-flex xs12 sm8 offset-sm2>
         <v-card>
           <v-card-title class="teal lighten-4">
-            Activities
+            My Activities
+            <v-spacer></v-spacer>
+            <add-activity></add-activity>
           </v-card-title>
           <v-card-text>
             <v-layout row wrap>
               <v-flex xs12>
-                <v-card class="mb-3 elevation-10" v-for="activity in activities">
+                <v-card class="mb-3 elevation-3" v-for="activity in activities">
                   <v-card-media class="elevation-5" :src="activity.fileUrl" height="300px" style="max-width:100%;max-height:100"></v-card-media>
                   <v-card-title primary-title>
                     <v-layout row wrap>
@@ -31,7 +33,7 @@
         </v-card>
       </v-flex>
     </v-layout>    
-  </v-container> 
+  </v-container>
 </template>
 
 <script>

@@ -11,10 +11,12 @@ import router from './router'
 import { store } from './store'
 import Alert from './components/shared/Alert.vue'
 import EditUserProfile from './components/user/profile/EditUserProfile.vue'
+import AddActivity from './components/activity/personal/AddActivity.vue'
 
 Vue.use(Vuetify)
 Vue.component('app-alert', Alert)
 Vue.component('edit-profile', EditUserProfile)
+Vue.component('add-activity', AddActivity)
 
 Vue.config.productionTip = false
 
@@ -39,5 +41,6 @@ new Vue({
         this.$store.dispatch('autoSignIn', user)
       }
     })
+    this.$store.dispatch('loadActivities')
   }
 })
