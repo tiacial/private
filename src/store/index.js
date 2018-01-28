@@ -125,12 +125,12 @@ export const store = new Vuex.Store({
         birthday: payload.birthday
       }
       let imageUrl
-      Firebase.database().ref('profiles/'+userId)
+      Firebase.database().ref('profiles/' + userId)
           .update(profile)
           .then(() => {
             const fileName = payload.profileImage.name
             const ext = fileName.slice(fileName.lastIndexOf('.'))
-            return Firebase.storage().ref('profiles/'+userId+'.'+ext)
+            return Firebase.storage().ref('profiles/' + userId + '.' + ext)
                 .put(payload.profileImage)
           }).then(fileData => {
             imageUrl = fileData.metadata.downloadURLs[0]
@@ -162,7 +162,8 @@ export const store = new Vuex.Store({
             key = data.key
             const fileName = payload.imageFile.name
             const ext = fileName.slice(fileName.lastIndexOf('.'))
-            return Firebase.storage().ref('activities/'+key+'.'+ext)
+            console.log(payload.imageFile)
+            return Firebase.storage().ref('activities/' + key + '.' + ext)
                 .put(payload.imageFile)
           }).then(fileData => {
             fileUrl = fileData.metadata.downloadURLs[0]

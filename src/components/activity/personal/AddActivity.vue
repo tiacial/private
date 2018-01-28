@@ -102,6 +102,7 @@
           this.imageUrl = fileReader.result
         })
         fileReader.readAsDataURL(file)
+        console.log($event.target.files)
         this.imageFile = file
       },
       onAddActivity () {

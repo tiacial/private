@@ -9,7 +9,7 @@
           <v-card-text>
             <v-layout row wrap>
               <v-flex xs12>
-                <v-card class="mb-3 elevation-10" v-for="activity in activities">
+                <v-card class="mb-3 elevation-10" v-for="activity in activities" :key="activity.date">
                   <v-card-media class="elevation-5" :src="activity.fileUrl" height="300px" style="max-width:100%;max-height:100"></v-card-media>
                   <v-card-title primary-title>
                     <v-layout row wrap>
@@ -46,9 +46,7 @@
         return this.$store.getters.getUser
       },
       activities () {
-        const userId = this.user.id
         return _.chain(this.$store.getters.getActivities)
-            .filter((activity) => { return activity.userId = userId})
             .sortBy('date')
             .value()
       }

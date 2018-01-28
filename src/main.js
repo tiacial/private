@@ -13,7 +13,10 @@ import Alert from './components/shared/Alert.vue'
 import EditUserProfile from './components/user/profile/EditUserProfile.vue'
 import AddActivity from './components/activity/personal/AddActivity.vue'
 
+// Third party components
 Vue.use(Vuetify)
+
+// Local components
 Vue.component('app-alert', Alert)
 Vue.component('edit-profile', EditUserProfile)
 Vue.component('add-activity', AddActivity)

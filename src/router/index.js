@@ -14,7 +14,7 @@ export default new Router({
   routes: [
     { path: '/', name: 'index', component: Index, beforeEnter: AuthGuard },
     { path: '/activities', name: 'dashboard', component: ActivityDashboard },
-    { path: '/personal/list', name: 'list', component: List},
+    { path: '/personal/list', name: 'list', component: List },
     { path: '/profile', name: 'profile', component: Profile, beforeEnter: AuthGuard },
     { path: '/signin', name: 'signin', component: SignIn },
     { path: '/signup', name: 'signup', component: SignUp }
